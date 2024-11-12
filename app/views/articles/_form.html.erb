@@ -1,15 +1,17 @@
-<%= form_with model: @article, class: "p-4 shadow-sm border-0 mt-4" do |f| %>
+<%= form_with model: @article, class: "needs-validation", data: { controller: "form-validation" } do |f| %>
   <div class="mb-3">
-    <%= f.label :title, class: "form-label fw-bold" %>
-    <%= f.text_field :title, class: "form-control", placeholder: "Enter article title" %>
+    <%= f.label :title, "Title", class: "form-label fw-bold" %>
+    <%= f.text_field :title, class: "form-control", placeholder: "Enter the article title", required: true %>
+    <div class="form-text">Make sure your title is descriptive and engaging.</div>
   </div>
 
   <div class="mb-3">
-    <%= f.label :content, class: "form-label fw-bold" %>
-    <%= f.text_area :content, class: "form-control", placeholder: "Enter article content", rows: 5 %>
+    <%= f.label :content, "Content", class: "form-label fw-bold" %>
+    <%= f.text_area :content, class: "form-control", placeholder: "Enter detailed content here", rows: 5, required: true %>
+    <div class="form-text">Provide as much detail as possible for better engagement.</div>
   </div>
 
   <div class="d-flex justify-content-end">
-    <%= f.submit "Submit", class: "btn btn-primary mt-2" %>
+    <%= f.submit action_name == "new" ? "Create Article" : "Update Article", class: "btn btn-primary mt-2" %>
   </div>
 <% end %>
